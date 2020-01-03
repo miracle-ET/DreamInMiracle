@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cy.pj.sys.dao.SysCommonDao">
+	<sql id="queryWhereId">
+		<where>
+			<if test="name!=null and name!=''">
+				${name2} like concat("%",#{name},"%")
+			</if>
+		</where>
+	</sql>
+
+
+	<insert id="insertObject" parameterType="java.util.Map">
+		insert into ${name1} (
+		<foreach collection="params" item="value" index="key"
+			separator=",">
+			${key}
+		</foreach>
+		)
+		values (
+		<foreach collection="params" item="value" index="key"
+			separator=",">
+			#{value}
+		</foreach>
+		)
+	</insert>
+
+	<update id="updateObject" parameterType="java.util.Map">
+		update ${name1} set
+		<foreach collection="params" item="value" index="key"
+			separator=",">
+			${key}=#{value}
+		</foreach>
+		where ${name2}=#{params[${name2}]}
+	</update>
+
+
+
+
+	<delete id="deleteObjectsByParams">
+		delete from ${name1} where
+		<foreach collection="params" separator=" or " item="param">
+			${name2}=#{param}
+		</foreach>
+	</delete>
+
+	<select id="getRowCount" resultType="int">
+		select count(*) from
+		${name1}
+		<include refid="queryWhereId" />
+	</select>
+	<select id="findPageObjects" resultType="map">
+		select * from
+		${name1}
+		<include refid="queryWhereId" />
+		order by createdTime desc
+		limit #{startIndex},#{pageSize}
+	</select>
+
+	<select id="findObjects" resultType="map">
+		select * from ${name1}
+	</select>
+
+	<select id="findObjectsByParams" resultType="map">
+		select * from ${name1} where
+		<foreach collection="params" separator=" or " item="param">
+			${name2}=#{param}
+		</foreach>
+	</select>
+
+	<select id="findParamByParams" resultType="map">
+		select ${name3} from ${name1} where
+		<foreach collection="params" separator=" or " item="param">
+			${name2}=#{param}
+		</foreach>
+	</select>
+
+	<select id="getCountFromParams" resultType="int">
+		select count(*) from ${name1} where
+		<foreach collection="params" separator=" or " item="param">
+			${name2}=#{param}
+		</foreach>
+	</select>
+
+</mapper>
