@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active: gameserver
+  messages:
+    encoding: UTF-8
+netty:
+  port: 14721
+  url: 0.0.0.0
+  ip: 132.232.131.128

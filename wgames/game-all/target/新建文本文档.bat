@@ -1,0 +1,1 @@
+java -jar game-all-0.1.0-exec.jar
