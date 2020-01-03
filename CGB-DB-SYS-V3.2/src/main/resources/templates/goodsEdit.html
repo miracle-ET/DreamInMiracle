@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>ECSHOP 管理中心 - 编辑商品 </title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="style/general.css" rel="stylesheet" type="text/css" />
+<link href="style/main.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<h1>
+    <span class="action-span"><a href="__GROUP__/Goods/goodsList">商品列表</a>
+    </span>
+    <span class="action-span1"><a href="__GROUP__">ECSHOP 管理中心</a></span>
+    <span id="search_id" class="action-span1"> - 编辑商品 </span>
+    <div style="clear:both"></div>
+</h1>
+
+<div class="tab-div">
+    <div id="tabbar-div">
+        <p>
+            <span class="tab-front" id="general-tab">通用信息</span>
+        </p>
+    </div>
+    <div id="tabbody-div">
+        <form method="POST" enctype="multipart/form-data" action="/commodity/doUpdate">
+			<table>
+				<tr>
+					<td>商品ID</td>
+					<td><input type="text" name="id" /></td>
+				</tr>
+				<tr>
+					<td>商品名字</td>
+					<td><input type="text" name="name" /></td>
+				</tr>
+				<tr>
+					<td>商品信息</td>
+					<td><input type="text" name="note" /></td>
+				</tr>
+				<tr>
+					<td>原价</td>
+					<td><input type="text" name="price1" /></td>
+				</tr>
+				<tr>
+					<td>现价</td>
+					<td><input type="text" name="price2" /></td>
+				</tr>
+				<tr>
+					<td>商品数量</td>
+					<td><input type="text" name="count" /></td>
+				</tr>
+				<tr>
+					<td>关键字1</td>
+					<td><input type="text" name="key1" /></td>
+				</tr>
+				<tr>
+					<td>关键字2</td>
+					<td><input type="text" name="key2" /></td>
+				</tr>
+
+				<tr>
+					<td>商品图片:</td>
+					<td><input type="file" name="file" /></td>
+				</tr>
+				
+				<tr>
+					<td></td>
+					<td><input type="submit" value="编辑商品" /></td>
+				</tr>
+			</table>
+		</form>
+    </div>
+</div>
+</body>
+</html>
